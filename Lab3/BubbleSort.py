@@ -5,17 +5,17 @@ def executeBubbleSort(data):
     :param list data:
     :return:
     """
-    size = len(data) - 1
+    size = len(data)
     isSorted = False
 
     while not isSorted:
         isSorted = True
-        for element in range(0, size):
-            if data[element] >= data[element + 1]:
+        for i in range(1, size):
+            if data[i-1] > data[i]:
                 isSorted = False
-                temp = data[element + 1]
-                data[element + 1] = data[element]
-                data[element] = temp
+                temp = data[i]
+                data[i] = data[i-1]
+                data[i-1] = temp
 
 
 def executeBubbleSortREV(data):
@@ -24,17 +24,17 @@ def executeBubbleSortREV(data):
     :param list data:
     :return:
     """
-    size = len(data) - 1
+    size = len(data)
     isSorted = False
 
     while not isSorted:
         isSorted = True
-        for element in range(0, size):
-            if data[element] <= data[element + 1]:           # only flipped comparison operator
+        for i in range(1, size):
+            if data[i - 1] < data[i]:
                 isSorted = False
-                temp = data[element + 1]
-                data[element + 1] = data[element]
-                data[element] = temp
+                temp = data[i]
+                data[i] = data[i - 1]
+                data[i - 1] = temp
 
 
 def executeBubbleSortHALF(data):
@@ -43,3 +43,14 @@ def executeBubbleSortHALF(data):
     :param list data:
     :return:
     """
+    size = len(data)
+    isSorted = False
+
+    while not isSorted:
+        isSorted = True
+        for i in range(1, size//2):
+            if data[i - 1] > data[i]:
+                isSorted = False
+                temp = data[i]
+                data[i] = data[i - 1]
+                data[i - 1] = temp
