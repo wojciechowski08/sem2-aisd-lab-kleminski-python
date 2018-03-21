@@ -10,9 +10,9 @@ def generate(n):
 
     list = []
 
-    for i in range(0, n+1):
+    for i in range(0, n):
 
-        list.append(random.randint(0, 1000000))
+        list.append(random.randint(0, 100))
         # list[i] = random.randint(0, 1000000)              #cant insert at non-existing index
 
     return list
