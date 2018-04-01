@@ -66,3 +66,6 @@ print(l)
 k = copy.copy(test)
 executeQuickSortREV(k)
 print(k)
+
+j = copy.copy(test)
+print(executeQuickSortHALF(j))

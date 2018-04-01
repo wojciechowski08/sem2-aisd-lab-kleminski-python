@@ -1,3 +1,5 @@
+import copy
+
 
 def executeQuickSort(data):
     """
@@ -88,12 +90,18 @@ def executeQuickSortREV(data):
     helper(data, 0, len(data) - 1)
 
 
-# def executeQuickSortHALF(data):
-#     """
-#
-#     :param list data:
-#     :return:
-#     """
+def executeQuickSortHALF(data):
+    """
+
+    :param list data:
+    :return:
+    """
+    temp = data[len(data) // 2:]
+    l = copy.copy(data)
+    l = l[:len(data)//2]
+    executeQuickSort(l)
+    result = l + temp
+    return result
 
 
 

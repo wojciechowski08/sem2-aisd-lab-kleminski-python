@@ -18,9 +18,9 @@ selsortHALF = True
 
 # quick sort - 3pkt
 
-qcksort = False
-qcksortREV = False
-qcksortHALF = False
+qcksort = True
+qcksortREV = True
+qcksortHALF = True
 
 # shell sort - 3pkt
 
