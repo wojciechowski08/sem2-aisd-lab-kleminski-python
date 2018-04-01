@@ -24,9 +24,9 @@ qcksortHALF = False
 
 # shell sort - 3pkt
 
-qcksort = False
-qcksortREV = False
-qcksortHALF = False
+shllsort = False
+shllsortREV = False
+shllsortHALF = False
 
 # bucket sort - 2pkt
 

@@ -1,10 +1,11 @@
 
-from generateArray import generate
-from BubbleSort import *
-from SelectionSort import *
-from MergeSort import *
-from QuickSort import *
+from Lab3.generateArray import generate
+from Lab3.BubbleSort import *
+from Lab3.SelectionSort import *
+from Lab3.MergeSort import *
+from Lab3.QuickSort import *
 import copy
+
 
 test = generate(10)
 

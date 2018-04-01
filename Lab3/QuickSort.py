@@ -66,10 +66,10 @@ def executeQuickSortREV(data):
         done = False
         while not done:
 
-            while leftmark >= rightmark and data[leftmark] >= pivotvalue:
+            while leftmark <= rightmark and data[leftmark] >= pivotvalue:
                 leftmark = leftmark + 1
 
-            while data[rightmark] <= pivotvalue and rightmark <= leftmark:
+            while data[rightmark] <= pivotvalue and rightmark >= leftmark:
                 rightmark = rightmark - 1
 
             if rightmark < leftmark:
@@ -88,12 +88,12 @@ def executeQuickSortREV(data):
     helper(data, 0, len(data) - 1)
 
 
-def executeQuickSortHALF(data):
-    """
-
-    :param list data:
-    :return:
-    """
+# def executeQuickSortHALF(data):
+#     """
+#
+#     :param list data:
+#     :return:
+#     """
 
 
 
