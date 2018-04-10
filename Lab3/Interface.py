@@ -25,7 +25,7 @@ def interface():
     wysciag = ""
 
     usuciag = ""
-    
+
     sortujc = "Sortowanie...\n" \
               "1. Babelkowe...\n" \
               "2. "

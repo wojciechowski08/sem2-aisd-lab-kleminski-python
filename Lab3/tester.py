@@ -9,7 +9,7 @@ import copy
 import time
 
 
-test = generate(10)
+test = generate(1000)
 
 print(test)
 
