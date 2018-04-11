@@ -1,10 +1,6 @@
 
 from Lab3.generateArray import generate
-from Lab3.BubbleSort import *
-from Lab3.SelectionSort import *
-from Lab3.MergeSort import *
-from Lab3.QuickSort import *
-from Lab3.ShellSort import *
+from Lab3.algorithms.ShellSort import *
 
 import copy
 import time
@@ -31,25 +27,25 @@ for m in modes:
 
             if m == 'n':
                 t = time.process_time()
-                executeMergeSort(l)
+                executeShellSort(l)
                 te = time.process_time() - t
                 # print(l)
                 print(te)
             elif m == 'r':
                 t = time.process_time()
-                executeMergeSortREV(l)
+                executeShellSortREV(l)
                 te = time.process_time() - t
                 # print(l)
                 print(te)
             elif m == 'h':
                 t = time.process_time()
-                executeMergeSortHALF(l)
+                executeShellSortHALF(l)
                 te = time.process_time() - t
                 # print(l)
                 print(te)
 
 
-            f = open("tests/mrgsrt-{}-{}.txt".format(m, c), 'a')
+            f = open("tests/shllsrt-{}-{}.txt".format(m, c), 'a')
             f.write(str(te) + '\n')
             f.close()
 

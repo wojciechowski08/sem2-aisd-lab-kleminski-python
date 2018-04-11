@@ -1,27 +1,21 @@
 
 from Lab3.generateArray import generate
-from Lab3.BubbleSort import *
-from Lab3.SelectionSort import *
-from Lab3.MergeSort import *
-from Lab3.QuickSort import *
-from Lab3.ShellSort import *
+from Lab3.algorithms.ShellSort import *
 import copy
-import time
 
-
-test = generate(1000)
+test = generate(10)
 
 print(test)
 
-# BUBBLE SORT ----------------------------------
-print("\nBUBBLE SORT\n")
-
-l = copy.copy(test)
-t = time.process_time()
-executeBubbleSort(l)
-te = time.process_time() - t
-print(l)
-print(te)
+# # BUBBLE SORT ----------------------------------
+# print("\nBUBBLE SORT\n")
+#
+# l = copy.copy(test)
+# t = time.process_time()
+# executeBubbleSort(l)
+# te = time.process_time() - t
+# print(l)
+# print(te)
 
 # k = copy.copy(test)
 # executeBubbleSortREV(k)
@@ -76,9 +70,17 @@ print(te)
 # print(executeQuickSortHALF(j))
 #
 #
-# # SHELL SORT ---------------------------------
-# print("\nSHELL SORT\n")
-#
-# l = copy.copy(test)
-# executeShellSort(l)
-# print(l)
+# SHELL SORT ---------------------------------
+print("\nSHELL SORT\n")
+
+l = copy.copy(test)
+executeShellSort(l)
+print(l)
+
+k = copy.copy(test)
+executeShellSortREV(k)
+print(k)
+
+j = copy.copy(test)
+executeShellSortHALF(j)
+print(j)
