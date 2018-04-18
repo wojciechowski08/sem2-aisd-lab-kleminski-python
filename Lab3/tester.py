@@ -1,9 +1,10 @@
-
+from Lab3.algorithms.MergeSort import executeMergeSort
 from Lab3.generateArray import generate
 from Lab3.algorithms.ShellSort import *
+from Lab3.algorithms.QuickSort import *
 import copy
 
-test = generate(10)
+test = generate(100000)
 
 print(test)
 
@@ -61,6 +62,8 @@ print(test)
 # l = copy.copy(test)
 # executeQuickSort(l)
 # print(l)
+# executeQuickSort(l)
+# print(l)
 #
 # k = copy.copy(test)
 # executeQuickSortREV(k)
@@ -73,14 +76,14 @@ print(test)
 # SHELL SORT ---------------------------------
 print("\nSHELL SORT\n")
 
-l = copy.copy(test)
-executeShellSort(l)
-print(l)
-
-k = copy.copy(test)
-executeShellSortREV(k)
-print(k)
-
-j = copy.copy(test)
-executeShellSortHALF(j)
-print(j)
+# l = copy.copy(test)
+# executeShellSort(l)
+# print(l)
+#
+# k = copy.copy(test)
+# executeShellSortREV(k)
+# print(k)
+#
+# j = copy.copy(test)
+# executeShellSortHALF(j)
+# print(j)
