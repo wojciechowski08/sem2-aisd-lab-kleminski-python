@@ -1,10 +1,12 @@
+import time
+
 from Lab3.algorithms.MergeSort import executeMergeSort
 from Lab3.generateArray import generate
 from Lab3.algorithms.ShellSort import *
 from Lab3.algorithms.QuickSort import *
 import copy
 
-test = generate(100000)
+test = generate(20000)
 
 print(test)
 
@@ -59,9 +61,12 @@ print(test)
 # # QUICK SORT ----------------------------------
 # print("\nQUICK SORT\n")
 #
-# l = copy.copy(test)
-# executeQuickSort(l)
-# print(l)
+l = copy.copy(test)
+t = time.process_time()
+executeQuickSort(l)
+te = time.process_time() - t
+print(l)
+print(te)
 # executeQuickSort(l)
 # print(l)
 #
@@ -74,7 +79,7 @@ print(test)
 #
 #
 # SHELL SORT ---------------------------------
-print("\nSHELL SORT\n")
+# print("\nSHELL SORT\n")
 
 # l = copy.copy(test)
 # executeShellSort(l)

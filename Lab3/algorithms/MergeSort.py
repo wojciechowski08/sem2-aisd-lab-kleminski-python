@@ -2,11 +2,6 @@ import copy
 
 
 def executeMergeSort(data):
-    """
-
-    :param list data:
-    :return:
-    """
 
     def merge(left, right):
         """

@@ -23,16 +23,21 @@ def executeShellSort(data):
     #     h = h//3
 
     gap = len(data) // 2
-    # loop over the gaps
+
     while gap > 0:
-        # do the insertion sort
+
         for i in range(gap, len(data)):
+
             val = data[i]
             j = i
+
             while j >= gap and data[j - gap] > val:
+
                 data[j] = data[j - gap]
                 j -= gap
+
             data[j] = val
+
         gap //= 2
 
 

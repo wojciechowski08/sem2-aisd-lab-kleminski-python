@@ -8,6 +8,19 @@ def executeQuickSort(data):
     :return:
     """
 
+
+    # def helper(data, first, last):
+    #     tempStack = []
+    #     tempStack.append((first, last))
+    #     while tempStack:
+    #         pos = tempStack.pop()
+    #         last, first = pos[1], pos[0]
+    #         piv = partition(data,first,last)
+    #         if piv-1 > first:
+    #             tempStack.append((first,piv-1))
+    #         if piv+1 < last:
+    #             tempStack.append((piv+1,last))
+
     def helper(data, first, last):
         if first < last:
             splitpoint = partition(data, first, last)

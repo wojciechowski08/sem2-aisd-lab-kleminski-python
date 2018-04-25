@@ -1,3 +1,4 @@
+import sys
 
 from Lab3.generateArray import generate
 from Lab3.algorithms.ShellSort import executeShellSort
@@ -10,10 +11,11 @@ import time
 # cases = [50, 100, 250, 500, 1000, 2000]
 cases = [100, 250, 500, 1000, 2000]
 
-modes = ['rand', 'sort', 'half', 'rev']
+# modes = ['rand', 'sort', 'half', 'rev']
+modes = ['rand']
 
 # algs = ['qcksrt', 'mrgsrt', 'shllsrt']
-algs = ['mrgsrt', 'shllsrt']
+algs = ['qcksrt']
 
 
 ### VERSION 1 - PROBABLY NOT GOOD - WORKING, BUT NOT AS IT SHOULD ###
@@ -74,6 +76,8 @@ for a in algs:
                 array = [int(x) for x in f.readline().split()]
 
                 f.close()
+
+                # sys.setrecursionlimit(max(sys.getrecursionlimit(), len(array)))
 
                 if a == 'qcksrt':
                     t = time.process_time()
