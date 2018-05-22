@@ -2,9 +2,9 @@ import random
 
 from Graph import Graph
 
-g = Graph(True, True)
+g = Graph(False, True)
 for i in range(15):
-    g.addVertex()
+    g.addVertex(i)
 g.order()
 weights = []
 for j in range(23):
@@ -44,4 +44,6 @@ g.addEdge(12,11,23)
 g.addEdge(13,10,2)#13
 g.addEdge(13,14,30)
 g.addEdge(14,13,30)
-g
+g.viewVerticles()
+g.viewEdges()
+print(g.findMinSpanningTree())
