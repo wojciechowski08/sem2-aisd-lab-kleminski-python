@@ -1,3 +1,4 @@
+import operator
 import sys
 
 
@@ -254,40 +255,48 @@ class Graph:
     # not working
     def findShortestPath(self, vert1, vert2):
 
-        # n = self.order()
-        # d = []
-        # p = []
-        # v = vert1
-        # for i in range(n):
-        #     d.append(sys.maxsize)
-        #     p.append(-1)
-        # d[v] = 0
-        # for i in range(1, n+1):
-        #     test = True
-        #     for x in range(0, n):
-        #         for y in self.adjacencyList[x]:
-        #             if d[y] <= d[x] + self.weights["{}-{}".format(x, y)]:
-        #                 test = False
-        #                 d[y] = d[x] + self.weights["{}-{}".format(x, y)]
-        #                 p[y] = x
-        #     if test:
-        #         return True
-        # for x in range(0, n):
-        #     for y in self.adjacencyList[x]:
-        #         if d[y] > d[x] + self.weights["{}-{}".format(x, y)]:
-        #             print(d)
-        #             print(p)
-        #             return False
-        #
-        # return True
-
         n = self.order()
+        d = {}
+        p = {}
         v = vert1
-        d = []
-        p = []
-        for i in range(n):
-            d.append(sys.maxsize)
-            p.append(-1)
+        S = []
+        Q = list(self.adjacencyList.keys())
+        for i in self.adjacencyList:
+            d[i] = sys.maxsize
+            p[i] = None
+        d[v] = 0
+        while not len(Q) == 0:
+            min = sys.maxsize
+            for i in d.keys():
+                if i in Q:
+                    if d[i] <= min:
+                        u = i
+                        min = d[i]
+            S.append(u)
+            Q.remove(u)
+            for w in self.adjacencyList[u]:
+                if not w in Q:
+                    continue
+                if d[w] > d[u] + self.weights["{}-{}".format(u,w)]:
+                    d[w] = d[u] + self.weights["{}-{}".format(u,w)]
+                    p[w] = u
+
+        current = vert2
+        next = p[current]
+        pathStr = ""
+        path = []
+        while not next == None:
+            path.append(current)
+            current = next
+            next = p[current]
+        path.append(current)
+        path.reverse()
+        for i in path:
+            pathStr += str(i) + " --- "
+        pathStr = pathStr[:-5]
+        print("Path from vertex " + str(vert1) + " to vertex " + str(vert2) + ": " + pathStr)
+        print("Overall weight: " + str(d[vert2]))
+
 
 
 
