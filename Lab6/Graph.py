@@ -17,30 +17,26 @@ class Graph:
 
         # self.verticles
         # self.edges
-        self.adjacencyList = {}
+        self.graph = {}
         self.weights = {}
         # self.values = {}
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def addVertex(self, vertex):
         """
 
         :param vertex:
         :return:
         """
-        if not vertex in self.adjacencyList:
-            self.adjacencyList[vertex] = []
+        if not vertex in self.graph:
+            self.graph[vertex] = []
             print("Vertex " + str(vertex) + " added to graph.")
         else:
             print(str(vertex) + " already in graph, try different name.")
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def removeVertex(self, vert):
         """
 
@@ -48,11 +44,11 @@ class Graph:
         :return:
         """
         try:
-            del self.adjacencyList[vert]
-            if len(self.adjacencyList) != 0:
-                for i in self.adjacencyList:
+            del self.graph[vert]
+            if len(self.graph) != 0:
+                for i in self.graph:
                     try:
-                        self.adjacencyList[i].remove(vert)
+                        self.graph[i].remove(vert)
                         del self.weights["{}-{}".format(vert, i)]
                         del self.weights["{}-{}".format(i, vert)]
                     except KeyError:
@@ -63,15 +59,13 @@ class Graph:
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def addEdge(self, vert1, vert2, weight=1):
 
-        if vert1 in self.adjacencyList and vert2 in self.adjacencyList:
-            (self.adjacencyList[vert1]).append(vert2)
+        if vert1 in self.graph and vert2 in self.graph:
+            (self.graph[vert1]).append(vert2)
             self.weights['{}-{}'.format(vert1, vert2)] = weight
             if not self.isDirected:
-                (self.adjacencyList[vert2]).append(vert1)
+                (self.graph[vert2]).append(vert1)
                 self.weights['{}-{}'.format(vert2, vert1)] = weight
             print("Edge between " + str(vert1) + " and " + str(vert2) + " added succesfully.")
         else:
@@ -79,15 +73,14 @@ class Graph:
 
 
 
-    # works for Directed and non-Directed
     def removeEdge(self, vert1, vert2):
 
         try:
-            if vert2 in self.adjacencyList[vert1]:
-                (self.adjacencyList[vert1]).remove(vert2)
+            if vert2 in self.graph[vert1]:
+                (self.graph[vert1]).remove(vert2)
                 del self.weights['{}-{}'.format(vert1, vert2)]
                 if not self.isDirected:
-                    (self.adjacencyList[vert2]).remove(vert1)
+                    (self.graph[vert2]).remove(vert1)
                     del self.weights['{}-{}'.format(vert2, vert1)]
                 print("Edge between " + str(vert1) + " and " + str(vert2) + " removed succesfully.")
             else:
@@ -99,19 +92,17 @@ class Graph:
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def setVertexName(self, vertex, newName):
 
-        if vertex in self.adjacencyList:
-            temp = self.adjacencyList[vertex]
-            self.adjacencyList[newName] = temp
-            del self.adjacencyList[vertex]
-            if len(self.adjacencyList) != 0:
-                for i in self.adjacencyList:
-                    if vertex in self.adjacencyList[i]:
-                        self.adjacencyList[i].remove(vertex)
-                        self.adjacencyList[i].append(newName)
+        if vertex in self.graph:
+            temp = self.graph[vertex]
+            self.graph[newName] = temp
+            del self.graph[vertex]
+            if len(self.graph) != 0:
+                for i in self.graph:
+                    if vertex in self.graph[i]:
+                        self.graph[i].remove(vertex)
+                        self.graph[i].append(newName)
                         temp = self.weights["{}-{}".format(vertex, i)]
                         self.weights["{}-{}".format(newName, i)] = temp
                         del self.weights["{}-{}".format(vertex, i)]
@@ -125,8 +116,6 @@ class Graph:
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def setEdgeWeight(self, vert1, vert2, weight):
         if self.isWeighted:
             try:
@@ -141,26 +130,23 @@ class Graph:
 
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
     def viewVerticles(self):
-        if len(self.adjacencyList) != 0:
+        if len(self.graph) != 0:
             verts = ""
-            for i in self.adjacencyList:
+            for i in self.graph:
                 verts += str(i) + " "
             print(verts)
         else:
             print("No verticles.")
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
+
     def viewEdges(self):
-        if len(self.adjacencyList) != 0:
+        if len(self.graph) != 0:
             edges = ""
-            for i in self.adjacencyList:
-                if len(self.adjacencyList[i]) != 0:
-                    for j in self.adjacencyList[i]:
+            for i in self.graph:
+                if len(self.graph[i]) != 0:
+                    for j in self.graph[i]:
                         if self.isWeighted:
                             edges += str(i) + " --- " + str(j) + " : " + str(self.weights["{}-{}".format(i, j)]) + "\n"
                         else:
@@ -173,18 +159,19 @@ class Graph:
             print("No verticles, so no edges.")
 
 
+
     def degree(self, vertex):
 
         both = 0
         inWay = 0
         outWay = 0
-        for i in self.adjacencyList:
-            for j in self.adjacencyList[i]:
+        for i in self.graph:
+            for j in self.graph[i]:
                 if i == vertex:
                     outWay += 1
                     both += 1
                 try:
-                    if (self.adjacencyList[i])[j] == vertex:
+                    if (self.graph[i])[j] == vertex:
                         inWay += 1
                         both += 1
                 except IndexError:
@@ -196,16 +183,16 @@ class Graph:
             print("Vertex " + str(vertex) + " has degree of " + str(both//2) + ".")
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
+
     def viewNeighbours(self, vertex):
-        if vertex in self.adjacencyList:
+        if vertex in self.graph:
             neighbours = ""
-            for i in self.adjacencyList[vertex]:
+            for i in self.graph[vertex]:
                 neighbours += str(i) + " "
             print("Neighbours for vertex " + str(vertex) + ": " + neighbours)
         else:
             print("No such vertex in the graph.")
+
 
 
     def findMinSpanningTree(self):
@@ -231,7 +218,7 @@ class Graph:
         Q = sortDict(self.weights)
         T = {}
 
-        for v in self.adjacencyList.keys():
+        for v in self.graph.keys():
             Z.append({str(v)})
         for i in range(n-1):
             temp = {}
@@ -251,8 +238,6 @@ class Graph:
 
 
 
-
-    # not working
     def findShortestPath(self, vert1, vert2):
 
         n = self.order()
@@ -260,8 +245,8 @@ class Graph:
         p = {}
         v = vert1
         S = []
-        Q = list(self.adjacencyList.keys())
-        for i in self.adjacencyList:
+        Q = list(self.graph.keys())
+        for i in self.graph:
             d[i] = sys.maxsize
             p[i] = None
         d[v] = 0
@@ -274,7 +259,7 @@ class Graph:
                         min = d[i]
             S.append(u)
             Q.remove(u)
-            for w in self.adjacencyList[u]:
+            for w in self.graph[u]:
                 if not w in Q:
                     continue
                 if d[w] > d[u] + self.weights["{}-{}".format(u,w)]:
@@ -299,33 +284,132 @@ class Graph:
 
 
 
-
-
-
     def size(self):
 
         m = 0
-        if len(self.adjacencyList) != 0:
-            for i in self.adjacencyList:
-                if len(self.adjacencyList[i]) != 0:
-                    for j in self.adjacencyList[i]:
+        if len(self.graph) != 0:
+            for i in self.graph:
+                if len(self.graph[i]) != 0:
+                    for j in self.graph[i]:
                         m += 1
         print("Graph size is " + str(m) + " edges.")
         return m
 
 
-    # works for Directed and non-Directed
-    # works for Weighted and non-Weighted
+
     def order(self):
 
-        n = len(self.adjacencyList)
+        n = len(self.graph)
         print("Graph order is " + str(n) + " verticles.")
         return n
 
+
+
     def clear(self):
-        self.adjacencyList.clear()
+        self.graph.clear()
         self.weights.clear()
         print("Graph cleared successfully.")
+
+
+
+    def findStronglyConnectedComponents(self):
+
+        def transposition():
+            tempAdjacencyList = {}
+            for i in list(self.graph.keys()):
+                tempAdjacencyList[i] = []
+            for v in self.graph:
+                for u in self.graph[v]:
+                    tempAdjacencyList[u].append(v)
+            return tempAdjacencyList
+
+        def DFSstack(v, visited, S):
+            visited[v] = True
+            for u in self.graph[v]:
+                if not visited[u]:
+                    DFSstack(u, visited, S)
+            S.append(v)
+
+        def DFSprint(v, visited, graph):
+            visited[v] = True
+            # print(v)
+            for u in graph[v]:
+                if not visited[u]:
+                    DFSprint(u, visited, graph)
+            print(v)
+
+        visited = {}
+        for i in self.graph:
+            visited[i] = False
+        S = []
+        for v in self.graph:
+            if not visited[v]:
+                DFSstack(v, visited, S)
+        tempGraph = transposition()
+        for i in tempGraph:
+            visited[i] = False
+        cn = 0
+        while len(S) != 0:
+            v = S.pop()
+            if visited[v]:
+                continue
+            cn += 1
+            print("SCC", str(cn), ":")
+            DFSprint(v, visited, tempGraph)
+
+
+
+    def findCycles(self):
+
+        def transposition():
+            tempAdjacencyList = {}
+            for i in list(self.graph.keys()):
+                tempAdjacencyList[i] = []
+            for v in self.graph:
+                for u in self.graph[v]:
+                    tempAdjacencyList[u].append(v)
+            return tempAdjacencyList
+
+        def DFSstack(v, visited, S):
+            visited[v] = True
+            for u in self.graph[v]:
+                if not visited[u]:
+                    DFSstack(u, visited, S)
+            S.append(v)
+
+        def DFSprint(v, visited, graph):
+            visited[v] = True
+            # print(v)
+            for u in graph[v]:
+                if not visited[u]:
+                    # DFSprint(u, visited, graph)
+                    return DFSprint(u, visited, graph) + [v]
+            return [v]
+
+        visited = {}
+        for i in self.graph:
+            visited[i] = False
+        S = []
+        for v in self.graph:
+            if not visited[v]:
+                DFSstack(v, visited, S)
+        tempGraph = transposition()
+        for i in tempGraph:
+            visited[i] = False
+        cn = 1
+        while len(S) != 0:
+            v = S.pop()
+            if visited[v]:
+                continue
+
+            t = DFSprint(v, visited, tempGraph)
+            if len(t) > 1:
+                print("Cycle", str(cn), ":")
+                print(t)
+                cn += 1
+
+
+
 
 
 

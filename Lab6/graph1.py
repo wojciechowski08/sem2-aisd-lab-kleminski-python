@@ -2,7 +2,7 @@ import random
 
 from Graph import Graph
 
-g = Graph(False, True)
+g = Graph(True, True)
 for i in range(15):
     g.addVertex(i)
 g.order()
@@ -48,3 +48,5 @@ g.viewVerticles()
 g.viewEdges()
 print(g.findMinSpanningTree())
 g.findShortestPath(6,5)
+g.findStronglyConnectedComponents()
+
