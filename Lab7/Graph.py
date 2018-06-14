@@ -24,7 +24,7 @@ class Graph:
 
 
 
-    def addVertex(self, vertex):
+    def addPerson(self, vertex):
 
         if not vertex in self.graph:
             self.graph[vertex] = []
@@ -36,7 +36,7 @@ class Graph:
             print(str(vertex) + " already in graph, try different name.")
 
 
-    def addEdge(self, vert1, vert2):
+    def addConnection(self, vert1, vert2):
 
         if vert1 in self.graph and vert2 in self.graph:
             (self.graph[vert1]).append(vert2)
@@ -47,7 +47,7 @@ class Graph:
             print("Could not add edge, missing vertex.")
 
 
-    def viewVerticles(self):
+    def viewPeople(self):
         if len(self.graph) != 0:
             verts = ""
             for i in self.graph:
@@ -57,7 +57,7 @@ class Graph:
             print("No verticles.")
 
 
-    def viewEdges(self):
+    def viewConnections(self):
         if len(self.graph) != 0:
             edges = ""
             for i in self.graph:
@@ -79,8 +79,8 @@ class Graph:
                 if len(self.graph[i]) != 0:
                     for j in self.graph[i]:
                         m += 1
-        print("Graph size is " + str(m) + " edges.")
-        return m
+        print("Graph size is " + str(m//2) + " edges.")
+        return m // 2
 
 
     def order(self):

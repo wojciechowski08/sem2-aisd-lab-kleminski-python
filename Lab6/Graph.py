@@ -1,5 +1,6 @@
 import operator
 import sys
+from typing import Any, Mapping, List
 
 
 class Graph:
@@ -15,18 +16,15 @@ class Graph:
         self.isDirected = isDirected
         self.isWeighted = isWeighted
 
-        # self.verticles
-        # self.edges
         self.graph = {}
         self.weights = {}
-        # self.values = {}
 
 
 
     def addVertex(self, vertex):
         """
 
-        :param vertex:
+        :param Any vertex:
         :return:
         """
         if not vertex in self.graph:
@@ -40,7 +38,7 @@ class Graph:
     def removeVertex(self, vert):
         """
 
-        :param name vert:
+        :param Any vert:
         :return:
         """
         try:
@@ -60,7 +58,13 @@ class Graph:
 
 
     def addEdge(self, vert1, vert2, weight=1):
+        """
 
+        :param Any vert1:
+        :param Any vert2:
+        :param int weight:
+        :return:
+        """
         if vert1 in self.graph and vert2 in self.graph:
             (self.graph[vert1]).append(vert2)
             self.weights['{}-{}'.format(vert1, vert2)] = weight
@@ -74,7 +78,12 @@ class Graph:
 
 
     def removeEdge(self, vert1, vert2):
+        """
 
+        :param Any vert1:
+        :param Any vert2:
+        :return:
+        """
         try:
             if vert2 in self.graph[vert1]:
                 (self.graph[vert1]).remove(vert2)
@@ -93,7 +102,12 @@ class Graph:
 
 
     def setVertexName(self, vertex, newName):
+        """
 
+        :param Any vertex:
+        :param Any newName:
+        :return:
+        """
         if vertex in self.graph:
             temp = self.graph[vertex]
             self.graph[newName] = temp
